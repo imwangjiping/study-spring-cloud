@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eureka-server
+    name: jwong-eureka-server
 
 server:
   port: 1112
