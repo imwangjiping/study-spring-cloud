@@ -1,0 +1,9 @@
+rootProject.name = 'study-spring-cloud'
+
+// 注册中心
+include 'jwong-eureka-registry-center'
+
+// 推送服务
+include 'jwong-eureka-provider-jpush'
+// 推送服务 消费
+include 'jwong-eureka-ribbon-consumer-jpush'

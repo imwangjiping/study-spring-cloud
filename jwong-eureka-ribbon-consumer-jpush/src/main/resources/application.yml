@@ -1,0 +1,13 @@
+server:
+  port: 10001
+
+spring:
+  application:
+    name: ribbon-consumer-message
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://peer1:1111/eureka/

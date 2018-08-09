@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:" + SPRING_BOOT_VERSION)
+        classpath("org.springframework:springloaded:" + SPRING_LOADED_VERSION)
+    }
+}
+
+group 'com.jwong'
+version '0.0.1-SNAPSHOT'
+description = ''
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'http://repo.maven.apache.org/maven2' }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    apply plugin: 'eclipse-wtp'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'war'
+
+    configurations {
+        providedRuntime
+    }
+
+    dependencies {
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+//        providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:" + SPRING_CLOUD_VERSION
+        }
+    }
+}
+
+apply from: rootProject.getRootDir().getAbsolutePath() + "/gradle/config_rigistry_center.gradle"
+apply from: rootProject.getRootDir().getAbsolutePath() + "/gradle/config_provider_jpush.gradle"
+apply from: rootProject.getRootDir().getAbsolutePath() + "/gradle/config_ribbon_consumer_jpush.gradle"

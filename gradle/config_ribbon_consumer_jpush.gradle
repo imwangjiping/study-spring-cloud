@@ -1,0 +1,7 @@
+project(':jwong-eureka-ribbon-consumer-jpush') {
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter-web')
+        compile('org.springframework.cloud:spring-cloud-starter-eureka')
+        compile('org.springframework.cloud:spring-cloud-starter-ribbon')
+    }
+}
