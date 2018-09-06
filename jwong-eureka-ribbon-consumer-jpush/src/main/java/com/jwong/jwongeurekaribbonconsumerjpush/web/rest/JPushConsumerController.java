@@ -22,7 +22,9 @@ public class JPushConsumerController {
 
     @GetMapping(value = "/ribbon-consumer-hello")
     public String ribbonConsumerHello() {
-        return restTemplate.getForEntity("http://JWONG-JPUSH-SERVICE/hello", String.class).getBody();
+        String url = "http://JWONG-JPUSH-SERVICE/hello";
+        // return restTemplate.getForEntity(url, String.class).getBody();
+        return restTemplate.getForObject(url, String.class);
     }
 
 }
